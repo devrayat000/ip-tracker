@@ -8,13 +8,16 @@ const Container = styled("main", {
 });
 
 const Header = styled("header", {
-  p: "2rem 1.5rem",
+  px: "1.5rem",
   backgroundImage: `url('${bg}')`,
   backgroundPosition: "top",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
   height: "$header",
   zIndex: 1000,
+  "@tabletUp": {
+    height: "calc($sizes$header - 1rem)",
+  },
 });
 
 const Title = styled("h1", {
@@ -22,6 +25,10 @@ const Title = styled("h1", {
   textAlign: "center",
   color: "White",
   fontWeight: 500,
+  pt: "2rem",
+  "@tabletUp": {
+    fontSize: "xx-large",
+  },
 });
 
 const globalStyles = globalCss({

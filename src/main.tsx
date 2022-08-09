@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("_app") as HTMLElement).render(
         refreshWhenHidden: false,
         refreshWhenOffline: false,
         revalidateOnFocus: false,
-        revalidateOnMount: false,
+        // revalidateOnMount: false,
         revalidateOnReconnect: false,
       }}
     >

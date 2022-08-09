@@ -9,8 +9,11 @@ import { getLocation } from "~/services/ip";
 type Props = {};
 
 const MapContainer = styled("div", {
-  height: "calc(100vh - $header)",
-  width: "100%",
+  width: "$full",
+  height: "calc(100vh - $sizes$header)",
+  "@tabletUp": {
+    height: "calc(100vh - $sizes$header + 1rem)",
+  },
 });
 
 const MapEl: React.FC<Props> = (props) => {

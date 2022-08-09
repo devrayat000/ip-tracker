@@ -9,6 +9,10 @@ const Wrapper = styled("form", {
   position: "relative",
   mt: "2rem",
   zIndex: 1000,
+  "@tabletUp": {
+    display: "grid",
+    placeItems: "center",
+  },
 });
 
 const SearchBar = styled("fieldset", {
@@ -18,6 +22,9 @@ const SearchBar = styled("fieldset", {
   alignItems: "stretch",
   appearance: "none",
   border: "none",
+  "@tabletUp": {
+    width: "$half",
+  },
 });
 
 const Input = styled("input", {
@@ -28,6 +35,10 @@ const Input = styled("input", {
   fontFamily: "$body",
   "&:focus": {
     outline: "none",
+  },
+  "&::placeholder": {
+    color: "$dark-gray",
+    fontWeight: 500,
   },
 });
 
@@ -44,15 +55,8 @@ const SearchButton = styled("button", {
 });
 
 function Search() {
-  const { data, mutate, isValidating } = useSWR(
-    "location",
-    () => getLocation(),
-    {
-      refreshWhenHidden: false,
-      refreshWhenOffline: false,
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    }
+  const { data, mutate, isValidating } = useSWR("location", () =>
+    getLocation()
   );
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
@@ -72,7 +76,7 @@ function Search() {
         <Input
           type="text"
           name="ip"
-          placeholder="IP address..."
+          placeholder="Search for any IP address or domain"
           defaultValue={data?.ip}
         />
         <SearchButton type="submit">
