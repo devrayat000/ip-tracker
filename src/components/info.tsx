@@ -36,19 +36,19 @@ export default Info;
 const InfoCard = styled("ul", {
   backgroundColor: "White",
   round: "1.25rem",
-  //   mx: "1.5rem",
   p: "1.75rem",
   listStyleType: "none",
   display: "grid",
   alignItems: "center",
   rowGap: "1.5rem",
+  boxShadow: "0px 0.5rem 2.5rem $colors$grey",
   $$cgap: 0,
   "@tabletUp": {
     p: "2rem",
     gridTemplateColumns: "repeat(4, 1fr)",
-    alignItems: "start",
-    justifyItems: "start",
-    $$cgap: "3rem",
+    alignItems: "stretch",
+    justifyItems: "stretch",
+    $$cgap: "4rem",
     columnGap: "$$cgap",
   },
 });
@@ -68,6 +68,23 @@ export const InfoDetails = () => {
     </InfoCard>
   );
 };
+
+const ListItem = styled("li", {
+  "@tabletUp": {
+    position: "relative",
+    "&:not(:last-child)::after": {
+      position: "absolute",
+      content: '""',
+      left: "calc(100% + ($$cgap / 2))",
+      color: "red",
+      width: "1px",
+      $$size: "60%",
+      height: "$$size",
+      top: "calc((100% - $$size) / 2)",
+      backgroundColor: "$dark-gray",
+    },
+  },
+});
 
 const InfoTitle = styled("h5", {
   color: "$dark-gray",
@@ -89,9 +106,9 @@ interface InfoItemProps {
 }
 export const InfoItem: React.FC<InfoItemProps> = ({ title, content }) => {
   return (
-    <li>
+    <ListItem>
       <InfoTitle>{title}</InfoTitle>
       <InfoContent>{content}</InfoContent>
-    </li>
+    </ListItem>
   );
 };
